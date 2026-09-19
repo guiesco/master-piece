@@ -1,0 +1,37 @@
+<!doctype html>
+<!-- From repo root: `npm run dev` / `vite` / `npm run build` so `dist/*-metadata.js` exist.
+     Served at repo root (e.g. npx serve) so `/dist/...` and `spritesheets/...` resolve. -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <!-- Root base URL: sprite paths are relative (spritesheets/...) and must resolve like tests_run.html. -->
+    <base href="/" />
+    <title>Issue #382 golden ZIP path generator (fixture-builder only)</title>
+    <script
+      src="https://unpkg.com/mithril@2.3.8/mithril.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Per-item + index data: `issue382-golden-runner.js` seeds a fresh catalog with
+         `seedCatalogWithGeneratedContext` (see tests/browser-catalog-fixture.js). -->
+    <script type="importmap">
+      {
+        "imports": {
+          "chai": "https://cdn.jsdelivr.net/npm/chai@6.2.2+esm",
+          "sinon": "https://cdn.jsdelivr.net/npm/sinon@21.0.3/+esm",
+          "mocha-globals": "/tests/bdd-globals.js"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <p id="status">Generating issue #382 golden zip paths…</p>
+    <script
+      type="module"
+      src="/tests/fixtures/issue-382/issue382-golden-runner.js"
+    ></script>
+  </body>
+</html>

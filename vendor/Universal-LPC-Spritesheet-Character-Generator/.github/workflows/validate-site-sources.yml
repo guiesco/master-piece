@@ -1,0 +1,50 @@
+name: Validate site sources
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  validate_site_sources:
+    name: Validate site sources
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+
+      - name: Validate site sources generation
+        run: npm run validate-site-sources
+
+      - name: Assert git diff
+        run: |
+          if [[ `git status --porcelain` ]]; then
+            echo "Differences found after (re)generation of CREDITS.csv and z_positions (not dist/*-metadata.js; those are built by Vite)."
+            echo "Please refer to CONTRIBUTING.md (File Generation) to regenerate and commit CREDITS.csv and z_positions.csv."
+            echo ""
+            echo "Files changed:"
+            git status --porcelain
+            echo ""
+            echo "Git diff:"
+            git diff
+            echo ""
+            echo "Git diff for untracked files:"
+            git ls-files --others --exclude-standard
+            exit -1
+          fi
+
+      - name: Check generated metadata size
+        run: npm run metadata:size:check

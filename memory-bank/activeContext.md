@@ -2,6 +2,8 @@
 
 ## Foco Atual
 
+**Repo GitHub (2026-09-19)** — código em `git@github.com:guiesco/master-piece.git` (`origin/main`); `vendor/` LPC versionado junto.
+
 **wooden_bow + arrow VFX (2026-09-18)** — staff removido; arco LPC, anim `shoot`, projétil flecha, dano ranged com delay (player + inimigo).
 
 ## Última entrega (Tasks 1–6)

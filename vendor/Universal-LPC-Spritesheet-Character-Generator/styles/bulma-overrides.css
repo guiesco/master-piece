@@ -1,0 +1,9 @@
+/*
+ * Bulma v1 → v0.9.4 visual parity (update_bulma branch only).
+ *
+ * Split for critical vs deferred: bulma-overrides-paint.css loads with the critical bundle (first paint);
+ * bulma-overrides-rest.css loads with main (deferred). main.css imports this file, which rejoins
+ * both in the same order as a single pre-split file (paint, then rest).
+ */
+@import "./bulma-overrides-paint.css";
+@import "./bulma-overrides-rest.css";

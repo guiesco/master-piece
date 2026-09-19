@@ -1,7 +1,8 @@
 # One Piece MMO — gitignore
 
-# Vendor enorme (Universal LPC clone ~90k files). Mantenha localmente.
-vendor/
+# Clone LPC: versionado junto (assets editáveis). Ignorar só o .git interno
+# (senão o Git trata a pasta como submodule sem arquivos).
+vendor/**/node_modules/
 
 # Godot
 godot/.godot/

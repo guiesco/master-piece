@@ -1,0 +1,53 @@
+<!doctype html>
+<!-- Run npm run dev or vite from the repo root first so dist/item-metadata.js exists (or
+     npm run build). Served at repo root so /dist/... resolves like tests_run.html. -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>ZIP export profiling (scripts/zip/zip-export-profile.ts)</title>
+    <!-- Served from repo root so spritesheets/... URLs resolve like tests_run.html. -->
+    <script
+      src="https://unpkg.com/mithril@2.3.8/mithril.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module">
+      import { aliasMetadata, categoryTree, metadataIndexes } from "/dist/index-metadata.js";
+      import { itemCredits } from "/dist/credits-metadata.js";
+      import { itemMetadata as itemMetadataLite } from "/dist/item-metadata.js";
+      import { itemLayers } from "/dist/layers-metadata.js";
+      import { paletteMetadata } from "/dist/palette-metadata.js";
+
+      const itemMetadata = {};
+      for (const id of Object.keys(itemMetadataLite)) {
+        itemMetadata[id] = {
+          ...itemMetadataLite[id],
+          layers: itemLayers[id] ?? {},
+          credits: itemCredits[id] ?? [],
+        };
+      }
+
+      window.itemMetadata = itemMetadata;
+      window.aliasMetadata = aliasMetadata;
+      window.categoryTree = categoryTree;
+      window.paletteMetadata = paletteMetadata;
+      window.metadataIndexes = metadataIndexes;
+    </script>
+    <script type="importmap">
+      {
+        "imports": {
+          "chai": "https://cdn.jsdelivr.net/npm/chai@6.2.2+esm",
+          "sinon": "https://cdn.jsdelivr.net/npm/sinon@21.0.3/+esm",
+          "mocha-globals": "/tests/bdd-globals.js"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <p id="status">Running ZIP export profiling…</p>
+    <script type="module" src="/scripts/zip/zip-export-profile-runner.ts"></script>
+  </body>
+</html>

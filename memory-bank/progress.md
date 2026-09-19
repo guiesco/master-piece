@@ -3,9 +3,9 @@
 ## Status Atual
 
 **Build:** MVP Alvida Hold  
-**Data:** 2026-09-18  
-**Fase atual:** wooden_bow + arrow (staff removido); polish cliente + memory bank (Task 6)  
-**Status global:** Tasks 1–6 concluídas (código); playtest F5 manual pendente
+**Data:** 2026-09-19  
+**Fase atual:** repo publicado em github.com/guiesco/master-piece (`origin/main`), incluindo `vendor/` LPC  
+**Status global:** código + vendor no GitHub; playtest F5 manual do wooden_bow ainda pendente
 
 ---
 

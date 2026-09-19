@@ -136,6 +136,11 @@ docker compose up -d
 
 ## Setup de Desenvolvimento
 
+### Repositório
+- Remote: `git@github.com:guiesco/master-piece.git` (`origin`, branch `main`)
+- `vendor/` (Universal LPC) entra no git para permitir edição de assets
+- `.superpowers/` fica fora do git
+
 ### Pré-requisitos
 - Docker Desktop (Windows/Mac/Linux)
 - Godot 4.x (baixar de godotengine.org)

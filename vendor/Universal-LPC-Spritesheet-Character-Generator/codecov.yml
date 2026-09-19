@@ -1,0 +1,59 @@
+coverage:
+  status:
+    project: false
+    patch:
+      default:
+        target: 100%
+        threshold: 0%
+        only_pulls: true
+        if_not_found: success
+        # Comment, blank, erased TypeScript, Istanbul-uninstrumented
+        # lines (argument-only / shorthand), and straight-line DA:0
+        # source-map holes in an entered function, entered try/finally,
+        # or a control-flow header whose body already has a hit are
+        # marked hit in uploaded lcov. FN/BRDA rows are dropped
+        # (source-map holes on types/signatures look like misses).
+        # See mark-non-executable-lines.js.
+    changes:
+      default:
+        if_not_found: success
+
+comment:
+  layout: "condensed_header, condensed_files, condensed_footer, flags"
+  behavior: default
+  require_changes: false
+  require_base: false
+  require_head: true
+  hide_project_coverage: true
+  after_n_builds: 2
+
+ignore:
+  - tests/**
+  - dist/**
+  - spritesheets/**
+  - sheet_definitions/**
+  - scripts/coverage/**
+  - scripts/computed-style/**
+  - scripts/imageProcessing/**
+  - scripts/zip/**
+  - scripts/profile/**
+  - scripts/fixture-builder.ts
+  - scripts/generate-purgecss-safelist-hints.ts
+  - scripts/issue382-golden-playwright.ts
+  - scripts/update_sheet_definitions.ts
+  - scripts/generateSources/source_inputs_fingerprint.ts
+  - vite/**
+  - vite.config.ts
+  - testem.cjs
+  - sources/performance-profiler.ts
+  - sources/utils/debug.ts
+  - "**/*.css"
+  - "**/*.scss"
+
+flags:
+  node:
+    paths:
+      - scripts/
+  browser:
+    paths:
+      - sources/

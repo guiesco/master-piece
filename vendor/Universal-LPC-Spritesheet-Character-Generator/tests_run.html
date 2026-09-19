@@ -1,0 +1,28 @@
+<!doctype html>
+<!-- Served by Testem + Vite middleware (config: testem.cjs). The metadata plugin runs on server start
+     so dist/*-metadata.js exist before tests import sources/install-item-metadata.ts. Run
+     npm run dev or vite from the repo root if you open this file outside Testem. -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Test Runner - Universal LPC Sprite Sheet</title>
+    <link rel="stylesheet" href="/node_modules/mocha/mocha.css" />
+    <link rel="stylesheet" href="/node_modules/bulma/css/bulma.min.css" />
+    <link rel="stylesheet" href="/sources/loading.css" />
+    <link rel="stylesheet" href="/sources/main.css" />
+    <!-- Prebuilt UMD bundle (not the package main); avoids Node `process` in Vite’s optimizer. -->
+    <script src="/node_modules/mocha/mocha.js"></script>
+    <!-- Testem browser client from the testem package (not repo-root testem.cjs). -->
+    <script src="/testem.js"></script>
+    <script>
+      mocha.setup("bdd");
+    </script>
+  </head>
+  <body>
+    <h1>Universal LPC Sprite Sheet - Test Runner</h1>
+
+    <div id="mocha"></div>
+
+    <script type="module" src="/tests/tests.js"></script>
+  </body>
+</html>
