@@ -1,0 +1,37 @@
+﻿{
+  "archetypes": [
+    {
+      "id": "goon_melee",
+      "display_name": "Alvida Goon (Melee)",
+      "description": "A heavy-set club-wielding pirate crew member.",
+      "hp": 40,
+      "base_damage": 4,
+      "speed": 2.5,
+      "detect_range": 8.0,
+      "attack_range": 1.5,
+      "xp_reward": 15,
+      "is_ranged": false,
+      "anim": "slash",
+      "loot_table": [
+        { "item_id": "wooden_sword", "drop_chance": 0.30 },
+        { "item_id": "wooden_bow",   "drop_chance": 0.15 }
+      ]
+    },
+    {
+      "id": "goon_ranged_weak",
+      "display_name": "Alvida Goon (Ranged)",
+      "description": "A scrawny pirate archer armed with a wooden bow.",
+      "hp": 25,
+      "base_damage": 3,
+      "speed": 1.8,
+      "detect_range": 10.0,
+      "attack_range": 5.0,
+      "xp_reward": 12,
+      "is_ranged": true,
+      "anim": "shoot",
+      "loot_table": [
+        { "item_id": "wooden_bow", "drop_chance": 0.25 }
+      ]
+    }
+  ]
+}

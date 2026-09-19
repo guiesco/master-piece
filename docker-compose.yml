@@ -1,0 +1,154 @@
+# =============================================================================
+# One Piece MMO — Docker Compose
+# Serviços: backend-builder (compila plugin Go), postgres, nakama
+# Profile dev: backend-watch (hot reload do plugin)
+# =============================================================================
+
+name: onepiece-mmo
+
+services:
+
+  # ---------------------------------------------------------------------------
+  # backend-builder: compila o plugin Go e deposita em /build/plugin.so
+  # O nakama monta o mesmo volume e carrega o .so ao iniciar.
+  # ---------------------------------------------------------------------------
+  backend-builder:
+    # Toolchain idêntica ao binário Nakama 3.21.1 (obrigatório para Go plugins)
+    # ENTRYPOINT da imagem já é "go"
+    image: heroiclabs/nakama-pluginbuilder:3.21.1
+    volumes:
+      - ./backend:/backend
+      - plugin_build:/build
+    working_dir: /backend
+    command:
+      - build
+      - -trimpath
+      - -buildmode=plugin
+      - -o
+      - /build/plugin.so
+      - .
+    # Não reinicia após o build; é um job one-shot
+    restart: "no"
+
+  # ---------------------------------------------------------------------------
+  # postgres: banco de dados para o Nakama
+  # ---------------------------------------------------------------------------
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: nakama
+      POSTGRES_USER: nakama
+      POSTGRES_PASSWORD: nakama
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U nakama -d nakama"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+  # ---------------------------------------------------------------------------
+  # nakama-migrate: aplica schema Postgres antes do servidor subir
+  # ---------------------------------------------------------------------------
+  nakama-migrate:
+    image: heroiclabs/nakama:3.21.1
+    depends_on:
+      postgres:
+        condition: service_healthy
+    entrypoint:
+      - "/nakama/nakama"
+      - "migrate"
+      - "up"
+      - "--database.address=nakama:nakama@postgres:5432/nakama"
+    restart: "no"
+
+  # ---------------------------------------------------------------------------
+  # nakama: servidor de jogo (carrega plugin.so do volume compartilhado)
+  # Console:  http://localhost:7351   (admin/password)
+  # API/WS:   http://localhost:7350
+  # ---------------------------------------------------------------------------
+  nakama:
+    image: heroiclabs/nakama:3.21.1
+    container_name: opm-nakama
+    depends_on:
+      postgres:
+        condition: service_healthy
+      backend-builder:
+        condition: service_completed_successfully
+      nakama-migrate:
+        condition: service_completed_successfully
+    volumes:
+      # Plugin Go compilado pelo backend-builder
+      - plugin_build:/nakama/data/modules
+      # Dados locais do Nakama (opcional, para persistir config)
+      - nakama_data:/nakama/data
+    ports:
+      - "7350:7350"   # API HTTP / WebSocket
+      - "7351:7351"   # Console admin
+      - "7349:7349"   # gRPC (opcional)
+    environment:
+      # Conexão com o Postgres
+      DATABASE_ADDRESS: postgres:5432
+      # Chave do servidor (clientes Godot usam esta chave)
+      NAKAMA_SERVER_KEY: defaultkey
+      # Log level (info em prod, debug para desenvolvimento)
+      NAKAMA_LOG_LEVEL: debug
+      # Console admin
+      NAKAMA_CONSOLE_USERNAME: admin
+      NAKAMA_CONSOLE_PASSWORD: password
+    # ENTRYPOINT da imagem já é: tini -- /nakama/nakama
+    # command deve passar APENAS flags (não repetir o binário).
+    command:
+      - "--database.address=nakama:nakama@postgres:5432/nakama"
+      - "--logger.level=DEBUG"
+      - "--runtime.path=/nakama/data/modules"
+      - "--socket.server_key=defaultkey"
+      - "--console.username=admin"
+      - "--console.password=password"
+    restart: unless-stopped
+    healthcheck:
+      # Imagem nakama não tem wget/curl — usa bash /dev/tcp
+      test: ["CMD-SHELL", "bash -c 'exec 3<>/dev/tcp/127.0.0.1/7350'"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 15s
+
+  # ---------------------------------------------------------------------------
+  # backend-watch: hot reload do plugin (profile dev)
+  # Polling (não inotify) — funciona no Docker Desktop / Windows.
+  # Uso: docker compose --profile dev up --build
+  # ---------------------------------------------------------------------------
+  backend-watch:
+    profiles: ["dev"]
+    image: docker:27-cli
+    working_dir: /workspace
+    volumes:
+      - ./:/workspace
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      nakama:
+        condition: service_healthy
+    environment:
+      COMPOSE_PROJECT_NAME: onepiece-mmo
+    entrypoint: ["/bin/sh", "/workspace/scripts/backend-watch.sh"]
+    restart: unless-stopped
+
+# =============================================================================
+# Volumes nomeados
+# =============================================================================
+volumes:
+  # Banco de dados Postgres
+  pgdata:
+    driver: local
+
+  # Plugin Go compilado (compartilhado entre backend-builder e nakama)
+  plugin_build:
+    driver: local
+
+  # Dados internos do Nakama (config, etc.)
+  nakama_data:
+    driver: local

@@ -1,0 +1,171 @@
+[gd_scene load_steps=2 format=3 uid="uid://bv3k8n2m1p94"]
+
+[ext_resource type="Script" path="res://scripts/ui/CharacterCreator.gd" id="1_cr8sc"]
+
+[node name="CharacterCreator" type="Control"]
+script = ExtResource("1_cr8sc")
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.07, 0.04, 0.02, 1)
+
+[node name="Panel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -380.0
+offset_top = -300.0
+offset_right = 380.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBox" type="VBoxContainer" parent="Panel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="Panel/Margin/VBox"]
+layout_mode = 2
+text = "— Criação de Personagem —"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 22
+
+[node name="Content" type="HBoxContainer" parent="Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 32
+size_flags_vertical = 3
+
+[node name="Controls" type="VBoxContainer" parent="Panel/Margin/VBox/Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="LabelName" type="Label" parent="Panel/Margin/VBox/Content/Controls"]
+layout_mode = 2
+text = "Nome do Personagem:"
+
+[node name="NameInput" type="LineEdit" parent="Panel/Margin/VBox/Content/Controls"]
+layout_mode = 2
+placeholder_text = "Ex: Monkey D. Luffy"
+max_length = 24
+
+[node name="LabelBody" type="Label" parent="Panel/Margin/VBox/Content/Controls"]
+layout_mode = 2
+text = "Corpo:"
+
+[node name="BodyOption" type="OptionButton" parent="Panel/Margin/VBox/Content/Controls"]
+layout_mode = 2
+
+[node name="LabelHair" type="Label" parent="Panel/Margin/VBox/Content/Controls"]
+layout_mode = 2
+text = "Cabelo:"
+
+[node name="HairOption" type="OptionButton" parent="Panel/Margin/VBox/Content/Controls"]
+layout_mode = 2
+
+[node name="LabelOutfit" type="Label" parent="Panel/Margin/VBox/Content/Controls"]
+layout_mode = 2
+text = "Roupa:"
+
+[node name="OutfitOption" type="OptionButton" parent="Panel/Margin/VBox/Content/Controls"]
+layout_mode = 2
+
+[node name="LabelBodyTint" type="Label" parent="Panel/Margin/VBox/Content/Controls"]
+layout_mode = 2
+text = "Cor do Corpo:"
+
+[node name="BodyTint" type="ColorPickerButton" parent="Panel/Margin/VBox/Content/Controls"]
+layout_mode = 2
+color = Color(0.8, 0.63, 0.47, 1)
+
+[node name="LabelHairTint" type="Label" parent="Panel/Margin/VBox/Content/Controls"]
+layout_mode = 2
+text = "Cor do Cabelo:"
+
+[node name="HairTint" type="ColorPickerButton" parent="Panel/Margin/VBox/Content/Controls"]
+layout_mode = 2
+color = Color(0.18, 0.1, 0.04, 1)
+
+[node name="StartButton" type="Button" parent="Panel/Margin/VBox/Content/Controls"]
+layout_mode = 2
+text = "⚓ Começar"
+theme_override_font_sizes/font_size = 18
+
+[node name="BackButton" type="Button" parent="Panel/Margin/VBox/Content/Controls"]
+layout_mode = 2
+text = "← Voltar"
+theme_override_font_sizes/font_size = 14
+
+[node name="PreviewArea" type="VBoxContainer" parent="Panel/Margin/VBox/Content"]
+layout_mode = 2
+custom_minimum_size = Vector2(200, 0)
+alignment = 1
+
+[node name="PreviewLabel" type="Label" parent="Panel/Margin/VBox/Content/PreviewArea"]
+layout_mode = 2
+text = "Preview"
+horizontal_alignment = 1
+
+[node name="PreviewFrame" type="Control" parent="Panel/Margin/VBox/Content/PreviewArea"]
+clip_contents = true
+custom_minimum_size = Vector2(192, 192)
+layout_mode = 2
+
+[node name="PreviewSprite" type="Sprite2D" parent="Panel/Margin/VBox/Content/PreviewArea/PreviewFrame"]
+position = Vector2(96, 96)
+scale = Vector2(3, 3)
+texture_filter = 1
+centered = true
+z_index = 0
+
+[node name="PreviewHead" type="Sprite2D" parent="Panel/Margin/VBox/Content/PreviewArea/PreviewFrame"]
+position = Vector2(96, 96)
+scale = Vector2(3, 3)
+texture_filter = 1
+centered = true
+z_index = 1
+
+[node name="PreviewEyes" type="Sprite2D" parent="Panel/Margin/VBox/Content/PreviewArea/PreviewFrame"]
+position = Vector2(96, 96)
+scale = Vector2(3, 3)
+texture_filter = 1
+centered = true
+z_index = 2
+
+[node name="PreviewOutfit" type="Sprite2D" parent="Panel/Margin/VBox/Content/PreviewArea/PreviewFrame"]
+position = Vector2(96, 96)
+scale = Vector2(3, 3)
+texture_filter = 1
+centered = true
+z_index = 3
+
+[node name="PreviewHair" type="Sprite2D" parent="Panel/Margin/VBox/Content/PreviewArea/PreviewFrame"]
+position = Vector2(96, 96)
+scale = Vector2(3, 3)
+texture_filter = 1
+centered = true
+z_index = 4
+
+[node name="StatusLabel" type="Label" parent="Panel/Margin/VBox"]
+layout_mode = 2
+text = "Conectando ao servidor..."
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.8, 0.7, 0.3, 1)

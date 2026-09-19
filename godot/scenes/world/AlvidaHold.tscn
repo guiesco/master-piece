@@ -1,0 +1,125 @@
+[gd_scene load_steps=16 format=3 uid="uid://dh7k2n5m3q16"]
+
+[ext_resource type="Script" path="res://scripts/world/AlvidaHold.gd" id="1_ah9gd"]
+[ext_resource type="PackedScene" path="res://scenes/ui/HUD.tscn" id="2_hudsc"]
+[ext_resource type="Script" path="res://scripts/world/CameraFollow.gd" id="3_camgd"]
+
+[sub_resource type="Environment" id="Environment_1"]
+background_mode = 1
+background_color = Color(0.06, 0.04, 0.02, 1)
+ambient_light_color = Color(0.3, 0.25, 0.2, 1)
+ambient_light_energy = 0.6
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_floor"]
+size = Vector2(50, 50)
+
+[sub_resource type="StandardMaterial3D" id="Mat_floor"]
+albedo_color = Color(0.18, 0.13, 0.09, 1)
+roughness = 0.9
+
+[sub_resource type="BoxMesh" id="BoxMesh_wallNS"]
+size = Vector3(50, 3, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wallEW"]
+size = Vector3(0.5, 3, 50)
+
+[sub_resource type="StandardMaterial3D" id="Mat_wall"]
+albedo_color = Color(0.22, 0.17, 0.12, 1)
+roughness = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wallNS"]
+size = Vector3(50, 3, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wallEW"]
+size = Vector3(0.5, 3, 50)
+
+[node name="AlvidaHold" type="Node3D"]
+script = ExtResource("1_ah9gd")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1")
+
+[node name="SunLight" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866, -0.354, 0.354, 0, 0.707, 0.707, -0.5, -0.612, 0.612, 25, 8, 25)
+light_color = Color(1.0, 0.92, 0.75, 1)
+light_energy = 1.2
+shadow_enabled = true
+
+[node name="CameraFollow" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.914, 0.407, 0, -0.407, 0.914, 25, 34, 45)
+script = ExtResource("3_camgd")
+fov = 52.0
+near = 0.1
+far = 200.0
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 25)
+mesh = SubResource("PlaneMesh_floor")
+surface_material_override/0 = SubResource("Mat_floor")
+cast_shadow = 0
+
+[node name="WallNorth" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 1.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallNorth"]
+shape = SubResource("BoxShape3D_wallNS")
+
+[node name="Mesh" type="MeshInstance3D" parent="WallNorth"]
+mesh = SubResource("BoxMesh_wallNS")
+surface_material_override/0 = SubResource("Mat_wall")
+
+[node name="WallSouth" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 1.5, 50)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallSouth"]
+shape = SubResource("BoxShape3D_wallNS")
+
+[node name="Mesh" type="MeshInstance3D" parent="WallSouth"]
+mesh = SubResource("BoxMesh_wallNS")
+surface_material_override/0 = SubResource("Mat_wall")
+
+[node name="WallEast" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 1.5, 25)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallEast"]
+shape = SubResource("BoxShape3D_wallEW")
+
+[node name="Mesh" type="MeshInstance3D" parent="WallEast"]
+mesh = SubResource("BoxMesh_wallEW")
+surface_material_override/0 = SubResource("Mat_wall")
+
+[node name="WallWest" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 25)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallWest"]
+shape = SubResource("BoxShape3D_wallEW")
+
+[node name="Mesh" type="MeshInstance3D" parent="WallWest"]
+mesh = SubResource("BoxMesh_wallEW")
+surface_material_override/0 = SubResource("Mat_wall")
+
+[node name="SpawnPoints" type="Node3D" parent="."]
+
+[node name="Spawn1" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 10)
+
+[node name="Spawn2" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 8)
+
+[node name="Spawn3" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 0, 10)
+
+[node name="Spawn4" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 40)
+
+[node name="Spawn5" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 42)
+
+[node name="Spawn6" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 0, 40)
+
+[node name="Players" type="Node3D" parent="."]
+
+[node name="Enemies" type="Node3D" parent="."]
+
+[node name="HUD" parent="." instance=ExtResource("2_hudsc")]

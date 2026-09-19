@@ -1,0 +1,57 @@
+# LPC Assets - Credits
+
+Este projeto inclui sprites derivados do Universal LPC Spritesheet Character Generator
+(Liberated Pixel Cup / OpenGameArt contributors).
+
+## Fonte
+
+- Repositorio: https://github.com/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator
+- Clone local: `vendor/Universal-LPC-Spritesheet-Character-Generator/`
+- Mapa de copias usadas no jogo: `godot/assets/lpc/SOURCE_MAP.json`
+- Script de sync: `tools/sync_lpc_assets.ps1`
+
+## Licencas
+
+Os assets LPC usados aqui estao sob combinacoes de:
+
+- OGA-BY 3.0
+- CC-BY-SA 3.0
+- GPL 3.0
+
+A atribuicao completa por arquivo esta em:
+
+`vendor/Universal-LPC-Spritesheet-Character-Generator/CREDITS.csv`
+
+## Subset embutido em `godot/assets/lpc/`
+
+Camadas walk (ciclo tipico 576x256, frame 64x64) + animacoes de combate:
+
+| Camada | IDs / animacoes |
+|--------|-----------------|
+| body | body_male_*/body_female_* walk; body_male/female_{slash,backslash,hurt,thrust,shoot} |
+| head | head_male/female walk + _{slash,backslash,hurt,thrust,shoot} |
+| hair | hair_* walk + *_slash / *_backslash / *_hurt / *_thrust / *_shoot |
+| outfit | outfit_* walk + *_slash / *_hurt / *_backslash / *_thrust / *_shoot (onde existir no vendor) |
+| weapon | weapon_sword_wood{,_bg} walk + slash/backslash (arming brass FG/BG); weapon_bow_wood{,_bg} walk + shoot (normal medium FG/BG); club/dagger walk |
+| eyes | eyes_default walk + *_slash / *_backslash / *_hurt / *_thrust / *_shoot |
+| fx | arrow.png (bow arrow shoot) |
+
+Notas de frame size (ver `frame_w`/`frame_h` no SOURCE_MAP):
+
+- walk / slash / hurt / backslash / thrust padrao corpo/roupa: 64x64
+- arming attack_slash / attack_backslash: tipicamente 128x128
+- gnarled thrust: tipicamente 192x192
+
+`weapon_sword_wood` usa paleta **brass** do arming sword (nao ha variante wood no vendor ULPC).
+
+Autores base (corpo LPC): Stephen Challener (Redshrike), Johannes Sjolund (wulax),
+bluecarrot16, Benjamin K. Smith (BenCreating), ElizaWy, e demais listados no CREDITS.csv
+para cada sheet.
+
+## Skills / ferramentas do repositorio oficial
+
+O clone em `vendor/` tambem contem skills de agente em `.agents/skills/`
+(canvas-render, catalog, sheet-definition, visual-test, etc.) e ferramentas em
+`tools/` / `scripts/` uteis para gerar sheets, credits e metadados no futuro.
+
+Synced: 2026-09-18 21:31:19

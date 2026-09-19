@@ -1,0 +1,94 @@
+[gd_scene load_steps=3 format=3 uid="uid://cp4m7n1k8r23"]
+
+[ext_resource type="Script" path="res://scripts/player/Player.gd" id="1_plygd"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1"]
+radius = 0.3
+height = 1.2
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_plygd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_1")
+position = Vector3(0, 0.6, 0)
+
+[node name="WeaponBehindSprite" type="Sprite3D" parent="."]
+visible = false
+position = Vector3(0, 0.64, -0.006)
+pixel_size = 0.02
+billboard = 1
+shading_mode = 0
+texture_filter = 0
+render_priority = -1
+region_enabled = true
+region_rect = Rect2(0, 128, 64, 64)
+
+[node name="BodySprite" type="Sprite3D" parent="."]
+position = Vector3(0, 0.64, 0)
+pixel_size = 0.02
+billboard = 1
+shading_mode = 0
+texture_filter = 0
+render_priority = 0
+region_enabled = true
+region_rect = Rect2(0, 128, 64, 64)
+
+[node name="HeadSprite" type="Sprite3D" parent="."]
+position = Vector3(0, 0.64, -0.001)
+pixel_size = 0.02
+billboard = 1
+shading_mode = 0
+texture_filter = 0
+render_priority = 1
+region_enabled = true
+region_rect = Rect2(0, 128, 64, 64)
+
+[node name="EyesSprite" type="Sprite3D" parent="."]
+position = Vector3(0, 0.64, -0.002)
+pixel_size = 0.02
+billboard = 1
+shading_mode = 0
+texture_filter = 0
+render_priority = 2
+region_enabled = true
+region_rect = Rect2(0, 128, 64, 64)
+
+[node name="OutfitSprite" type="Sprite3D" parent="."]
+position = Vector3(0, 0.64, -0.003)
+pixel_size = 0.02
+billboard = 1
+shading_mode = 0
+texture_filter = 0
+render_priority = 3
+region_enabled = true
+region_rect = Rect2(0, 128, 64, 64)
+
+[node name="HairSprite" type="Sprite3D" parent="."]
+position = Vector3(0, 0.64, -0.004)
+pixel_size = 0.02
+billboard = 1
+shading_mode = 0
+texture_filter = 0
+render_priority = 4
+region_enabled = true
+region_rect = Rect2(0, 128, 64, 64)
+
+[node name="WeaponSprite" type="Sprite3D" parent="."]
+visible = false
+position = Vector3(0, 0.64, 0.005)
+pixel_size = 0.02
+billboard = 1
+shading_mode = 0
+texture_filter = 0
+render_priority = 5
+region_enabled = true
+region_rect = Rect2(0, 128, 64, 64)
+
+[node name="HPLabel" type="Label3D" parent="."]
+position = Vector3(0, 1.5, 0)
+billboard = 1
+text = "100/100"
+font_size = 64
+outline_size = 12
+modulate = Color(0.2, 1, 0.2, 1)

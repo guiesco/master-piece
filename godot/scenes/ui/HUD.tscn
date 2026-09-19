@@ -1,0 +1,240 @@
+[gd_scene load_steps=2 format=3 uid="uid://fh6k1n4m7w81"]
+
+[ext_resource type="Script" path="res://scripts/ui/HUD.gd" id="1_hudgd"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_hudgd")
+layer = 10
+
+[node name="HUDContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="TopLeft" type="VBoxContainer" parent="HUDContainer"]
+layout_mode = 1
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 260.0
+offset_bottom = 120.0
+theme_override_constants/separation = 6
+
+[node name="LevelLabel" type="Label" parent="HUDContainer/TopLeft"]
+layout_mode = 2
+text = "Nível 1"
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(1.0, 0.85, 0.2, 1)
+
+[node name="HPContainer" type="HBoxContainer" parent="HUDContainer/TopLeft"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="HPBar" type="ProgressBar" parent="HUDContainer/TopLeft/HPContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(160, 18)
+value = 100.0
+max_value = 100.0
+show_percentage = false
+
+[node name="HPLabel" type="Label" parent="HUDContainer/TopLeft/HPContainer"]
+layout_mode = 2
+text = "100 / 100"
+theme_override_font_sizes/font_size = 13
+
+[node name="XPContainer" type="HBoxContainer" parent="HUDContainer/TopLeft"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="XPBar" type="ProgressBar" parent="HUDContainer/TopLeft/XPContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(160, 14)
+value = 0.0
+max_value = 100.0
+show_percentage = false
+
+[node name="XPLabel" type="Label" parent="HUDContainer/TopLeft/XPContainer"]
+layout_mode = 2
+text = "XP: 0 / 100"
+theme_override_font_sizes/font_size = 12
+
+[node name="BottomBar" type="HBoxContainer" parent="HUDContainer"]
+layout_mode = 1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -80.0
+offset_bottom = -12.0
+offset_left = 12.0
+offset_right = -12.0
+alignment = 1
+theme_override_constants/separation = 16
+
+[node name="Skills" type="HBoxContainer" parent="HUDContainer/BottomBar"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Skill1" type="TextureButton" parent="HUDContainer/BottomBar/Skills"]
+layout_mode = 2
+custom_minimum_size = Vector2(56, 56)
+tooltip_text = "Soco (Punch)"
+
+[node name="SkillLabel1" type="Label" parent="HUDContainer/BottomBar/Skills/Skill1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 20
+mouse_filter = 2
+
+[node name="Skill2" type="TextureButton" parent="HUDContainer/BottomBar/Skills"]
+layout_mode = 2
+custom_minimum_size = Vector2(56, 56)
+tooltip_text = "Skill de Arma"
+
+[node name="SkillLabel2" type="Label" parent="HUDContainer/BottomBar/Skills/Skill2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 20
+mouse_filter = 2
+
+[node name="AttrButton" type="Button" parent="HUDContainer/BottomBar"]
+layout_mode = 2
+custom_minimum_size = Vector2(90, 40)
+text = "Atributos"
+theme_override_font_sizes/font_size = 14
+
+[node name="InvButton" type="Button" parent="HUDContainer/BottomBar"]
+layout_mode = 2
+custom_minimum_size = Vector2(80, 40)
+text = "[ I ] Inv"
+theme_override_font_sizes/font_size = 14
+
+[node name="AttrPanel" type="PanelContainer" parent="HUDContainer"]
+visible = false
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -120.0
+offset_top = -240.0
+offset_right = 120.0
+offset_bottom = -85.0
+
+[node name="Margin" type="MarginContainer" parent="HUDContainer/AttrPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="AttrBox" type="VBoxContainer" parent="HUDContainer/AttrPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="AttrTitle" type="Label" parent="HUDContainer/AttrPanel/Margin/AttrBox"]
+layout_mode = 2
+text = "-- Atributos --"
+horizontal_alignment = 1
+
+[node name="STRRow" type="HBoxContainer" parent="HUDContainer/AttrPanel/Margin/AttrBox"]
+layout_mode = 2
+
+[node name="STRName" type="Label" parent="HUDContainer/AttrPanel/Margin/AttrBox/STRRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "STR"
+
+[node name="STRValue" type="Label" parent="HUDContainer/AttrPanel/Margin/AttrBox/STRRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(30, 0)
+text = "1"
+horizontal_alignment = 1
+
+[node name="STRBtn" type="Button" parent="HUDContainer/AttrPanel/Margin/AttrBox/STRRow"]
+layout_mode = 2
+text = "+1"
+disabled = true
+
+[node name="AGIRow" type="HBoxContainer" parent="HUDContainer/AttrPanel/Margin/AttrBox"]
+layout_mode = 2
+
+[node name="AGIName" type="Label" parent="HUDContainer/AttrPanel/Margin/AttrBox/AGIRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "AGI"
+
+[node name="AGIValue" type="Label" parent="HUDContainer/AttrPanel/Margin/AttrBox/AGIRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(30, 0)
+text = "1"
+horizontal_alignment = 1
+
+[node name="AGIBtn" type="Button" parent="HUDContainer/AttrPanel/Margin/AttrBox/AGIRow"]
+layout_mode = 2
+text = "+1"
+disabled = true
+
+[node name="INTRow" type="HBoxContainer" parent="HUDContainer/AttrPanel/Margin/AttrBox"]
+layout_mode = 2
+
+[node name="INTName" type="Label" parent="HUDContainer/AttrPanel/Margin/AttrBox/INTRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "INT"
+
+[node name="INTValue" type="Label" parent="HUDContainer/AttrPanel/Margin/AttrBox/INTRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(30, 0)
+text = "1"
+horizontal_alignment = 1
+
+[node name="INTBtn" type="Button" parent="HUDContainer/AttrPanel/Margin/AttrBox/INTRow"]
+layout_mode = 2
+text = "+1"
+disabled = true
+
+[node name="InventoryPanel" type="PanelContainer" parent="HUDContainer"]
+visible = false
+layout_mode = 1
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -200.0
+offset_right = -12.0
+offset_bottom = 200.0
+
+[node name="Margin" type="MarginContainer" parent="HUDContainer/InventoryPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="InvBox" type="VBoxContainer" parent="HUDContainer/InventoryPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="InvTitle" type="Label" parent="HUDContainer/InventoryPanel/Margin/InvBox"]
+layout_mode = 2
+text = "— Inventário —"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 15
+
+[node name="InvList" type="VBoxContainer" parent="HUDContainer/InventoryPanel/Margin/InvBox"]
+layout_mode = 2
+theme_override_constants/separation = 4

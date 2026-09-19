@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b11035icliyy"]
+
+[ext_resource type="Script" path="res://scripts/fx/Projectile.gd" id="1_projgd"]
+[ext_resource type="Texture2D" path="res://assets/fx/arrow.png" id="2_projtex"]
+
+[node name="Projectile" type="Node3D"]
+script = ExtResource("1_projgd")
+
+[node name="Sprite" type="Sprite3D" parent="."]
+billboard = 0
+shading_mode = 0
+texture_filter = 0
+pixel_size = 0.02
+modulate = Color(1, 1, 1, 1)
+texture = ExtResource("2_projtex")
+region_enabled = true
+region_rect = Rect2(384, 64, 64, 64)

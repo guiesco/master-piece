@@ -1,0 +1,59 @@
+﻿{
+  "skills": [
+    {
+      "id": "punch",
+      "display_name": "Punch",
+      "description": "A basic unarmed strike. Always available.",
+      "damage": 5,
+      "range": 1.5,
+      "cooldown_ms": 800,
+      "requires_weapon": null,
+      "anim": "slash",
+      "is_ranged": false
+    },
+    {
+      "id": "sword_slash",
+      "display_name": "Sword Slash",
+      "description": "A forward slash with a wooden sword.",
+      "damage": 12,
+      "range": 2.0,
+      "cooldown_ms": 1200,
+      "requires_weapon": "wooden_sword",
+      "anim": "slash",
+      "is_ranged": false
+    },
+    {
+      "id": "sword_backslash",
+      "display_name": "Sword Backslash",
+      "description": "A reverse slash with a wooden sword.",
+      "damage": 10,
+      "range": 2.0,
+      "cooldown_ms": 1100,
+      "requires_weapon": "wooden_sword",
+      "anim": "backslash",
+      "is_ranged": false
+    },
+    {
+      "id": "bow_shot",
+      "display_name": "Bow Shot",
+      "description": "A quick arrow shot.",
+      "damage": 8,
+      "range": 6.0,
+      "cooldown_ms": 900,
+      "requires_weapon": "wooden_bow",
+      "anim": "shoot",
+      "is_ranged": true
+    },
+    {
+      "id": "bow_aimed",
+      "display_name": "Aimed Shot",
+      "description": "A heavier aimed arrow.",
+      "damage": 11,
+      "range": 7.0,
+      "cooldown_ms": 1200,
+      "requires_weapon": "wooden_bow",
+      "anim": "shoot",
+      "is_ranged": true
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+# One Piece MMO — gitignore
+
+# Vendor enorme (Universal LPC clone ~90k files). Mantenha localmente.
+vendor/
+
+# Godot
+godot/.godot/
+godot/**/*.translation
+godot/export_presets.cfg
+godot/.import/
+
+# Backend / Go
+backend/build/
+*.so
+*.exe
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.superpowers/
+*.user

@@ -1,0 +1,32 @@
+{
+  "catalog": {
+    "bodies": [
+      "body_male_light",
+      "body_male_medium",
+      "body_male_dark",
+      "body_female_light",
+      "body_female_medium"
+    ],
+    "hairs": [
+      "hair_short_brown",
+      "hair_long_black",
+      "hair_mohawk_red",
+      "hair_bald",
+      "hair_curly_blonde"
+    ],
+    "outfits": [
+      "outfit_pirate_a",
+      "outfit_pirate_b",
+      "outfit_guard_a",
+      "outfit_rags_a",
+      "outfit_sailor_a"
+    ],
+    "weapons": [
+      "weapon_none",
+      "weapon_sword_wood",
+      "weapon_bow_wood",
+      "weapon_club_iron",
+      "weapon_dagger_steel"
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+﻿{
+  "weapons": [
+    {
+      "id": "wooden_sword",
+      "display_name": "Wooden Sword",
+      "damage_bonus": 3,
+      "skill_primary": "sword_slash",
+      "skill_secondary": "sword_backslash",
+      "lpc_layer": "weapon_sword_wood"
+    },
+    {
+      "id": "wooden_bow",
+      "display_name": "Wooden Bow",
+      "damage_bonus": 2,
+      "skill_primary": "bow_shot",
+      "skill_secondary": "bow_aimed",
+      "lpc_layer": "weapon_bow_wood"
+    }
+  ]
+}

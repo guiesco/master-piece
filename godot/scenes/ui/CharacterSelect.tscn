@@ -1,0 +1,191 @@
+[gd_scene format=3 uid="uid://charselect001"]
+
+[ext_resource type="Script" path="res://scripts/ui/CharacterSelect.gd" id="1_csgd"]
+
+[node name="CharacterSelect" type="Control"]
+script = ExtResource("1_csgd")
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.05, 0.03, 0.01, 1)
+
+[node name="Panel" type="PanelContainer" parent="Background"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -420.0
+offset_top = -280.0
+offset_right = 420.0
+offset_bottom = 280.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="Background/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_top = 28
+theme_override_constants/margin_right = 28
+theme_override_constants/margin_bottom = 28
+
+[node name="VBox" type="VBoxContainer" parent="Background/Panel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="Background/Panel/Margin/VBox"]
+layout_mode = 2
+text = "— Selecionar Personagem —"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 26
+theme_override_colors/font_color = Color(1.0, 0.85, 0.2, 1)
+
+[node name="Slots" type="HBoxContainer" parent="Background/Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 16
+size_flags_vertical = 3
+
+[node name="Slot0" type="PanelContainer" parent="Background/Panel/Margin/VBox/Slots"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SlotMargin" type="MarginContainer" parent="Background/Panel/Margin/VBox/Slots/Slot0"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="SlotBox" type="VBoxContainer" parent="Background/Panel/Margin/VBox/Slots/Slot0/SlotMargin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="SlotTitle" type="Label" parent="Background/Panel/Margin/VBox/Slots/Slot0/SlotMargin/SlotBox"]
+layout_mode = 2
+text = "Slot 1"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+
+[node name="NameLabel" type="Label" parent="Background/Panel/Margin/VBox/Slots/Slot0/SlotMargin/SlotBox"]
+layout_mode = 2
+text = "— Vazio —"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 18
+custom_minimum_size = Vector2(180, 30)
+
+[node name="LevelLabel" type="Label" parent="Background/Panel/Margin/VBox/Slots/Slot0/SlotMargin/SlotBox"]
+layout_mode = 2
+text = ""
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+
+[node name="PlayButton" type="Button" parent="Background/Panel/Margin/VBox/Slots/Slot0/SlotMargin/SlotBox"]
+layout_mode = 2
+text = "+ Criar"
+theme_override_font_sizes/font_size = 16
+custom_minimum_size = Vector2(0, 40)
+
+[node name="Slot1" type="PanelContainer" parent="Background/Panel/Margin/VBox/Slots"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SlotMargin" type="MarginContainer" parent="Background/Panel/Margin/VBox/Slots/Slot1"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="SlotBox" type="VBoxContainer" parent="Background/Panel/Margin/VBox/Slots/Slot1/SlotMargin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="SlotTitle" type="Label" parent="Background/Panel/Margin/VBox/Slots/Slot1/SlotMargin/SlotBox"]
+layout_mode = 2
+text = "Slot 2"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+
+[node name="NameLabel" type="Label" parent="Background/Panel/Margin/VBox/Slots/Slot1/SlotMargin/SlotBox"]
+layout_mode = 2
+text = "— Vazio —"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 18
+custom_minimum_size = Vector2(180, 30)
+
+[node name="LevelLabel" type="Label" parent="Background/Panel/Margin/VBox/Slots/Slot1/SlotMargin/SlotBox"]
+layout_mode = 2
+text = ""
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+
+[node name="PlayButton" type="Button" parent="Background/Panel/Margin/VBox/Slots/Slot1/SlotMargin/SlotBox"]
+layout_mode = 2
+text = "+ Criar"
+theme_override_font_sizes/font_size = 16
+custom_minimum_size = Vector2(0, 40)
+
+[node name="Slot2" type="PanelContainer" parent="Background/Panel/Margin/VBox/Slots"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SlotMargin" type="MarginContainer" parent="Background/Panel/Margin/VBox/Slots/Slot2"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="SlotBox" type="VBoxContainer" parent="Background/Panel/Margin/VBox/Slots/Slot2/SlotMargin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="SlotTitle" type="Label" parent="Background/Panel/Margin/VBox/Slots/Slot2/SlotMargin/SlotBox"]
+layout_mode = 2
+text = "Slot 3"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+
+[node name="NameLabel" type="Label" parent="Background/Panel/Margin/VBox/Slots/Slot2/SlotMargin/SlotBox"]
+layout_mode = 2
+text = "— Vazio —"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 18
+custom_minimum_size = Vector2(180, 30)
+
+[node name="LevelLabel" type="Label" parent="Background/Panel/Margin/VBox/Slots/Slot2/SlotMargin/SlotBox"]
+layout_mode = 2
+text = ""
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+
+[node name="PlayButton" type="Button" parent="Background/Panel/Margin/VBox/Slots/Slot2/SlotMargin/SlotBox"]
+layout_mode = 2
+text = "+ Criar"
+theme_override_font_sizes/font_size = 16
+custom_minimum_size = Vector2(0, 40)
+
+[node name="StatusLabel" type="Label" parent="Background/Panel/Margin/VBox"]
+layout_mode = 2
+text = "Conectando ao servidor..."
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.8, 0.7, 0.3, 1)
+theme_override_font_sizes/font_size = 14
